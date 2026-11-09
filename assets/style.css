@@ -177,3 +177,106 @@ section { padding: clamp(50px, 8vw, 90px) 0; }
   html { scroll-behavior: auto; }
   .btn { transition: none; }
 }
+
+/* ==========================================================
+   Menu principal
+   ========================================================== */
+.header .conteneur { flex-wrap: wrap; }
+.menu { display: flex; gap: 4px; margin-left: auto; }
+.menu a {
+  padding: .45em .95em; border-radius: 999px;
+  text-decoration: none; color: var(--marine); font-weight: 600;
+  transition: background .15s ease;
+}
+.menu a:hover { background: #e6f3f6; }
+.menu a[aria-current="page"] { background: var(--marine); color: var(--blanc); }
+.menu a:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; }
+
+@media (max-width: 1000px) {
+  .logo span { display: none; }
+}
+@media (max-width: 760px) {
+  .menu { order: 3; width: 100%; justify-content: center; margin: 0 0 10px; }
+  .menu a { padding: .35em .8em; font-size: .95rem; }
+}
+
+/* ==========================================================
+   Pages intérieures (Historique, Mission, Vision)
+   ========================================================== */
+.entete-page {
+  position: relative; overflow: hidden;
+  background: linear-gradient(120deg, var(--marine), var(--canard));
+  color: var(--blanc);
+  padding: clamp(50px, 8vw, 90px) 0 clamp(70px, 10vw, 110px);
+}
+.entete-page h1 { color: var(--blanc); font-size: clamp(2rem, 5vw, 3rem); margin: 0 0 .3em; }
+.entete-page p { font-size: 1.15rem; max-width: 52ch; margin: 0; }
+.entete-page::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 50px;
+  background: var(--fond); clip-path: ellipse(75% 100% at 50% 100%);
+}
+.contenu { max-width: 860px; }
+.contenu > p, .contenu li { font-size: 1.08rem; }
+.chapo { font-size: 1.2rem !important; color: var(--marine); }
+
+/* Frise chronologique */
+.frise { list-style: none; margin: 40px 0 0; padding: 0 0 0 34px; border-left: 4px solid #e3e8ee; }
+.frise li { position: relative; margin-bottom: 40px; }
+.frise li::before {
+  content: ""; position: absolute; left: -50px; top: 4px;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--c, var(--canard)); border: 4px solid var(--fond);
+}
+.frise .date {
+  display: inline-block; font-weight: 800; color: var(--t, var(--blanc)); background: var(--c, var(--canard));
+  padding: .15em .8em; border-radius: 999px; font-size: .95rem; margin-bottom: .4em;
+}
+.frise h3 { margin: .2em 0 .3em; font-size: 1.3rem; }
+.frise p { margin: 0 0 .6em; color: var(--texte); }
+
+/* Encadré citation */
+.citation {
+  margin: 50px 0; padding: 30px clamp(20px, 4vw, 40px);
+  background: var(--blanc); border-left: 8px solid var(--jaune); border-radius: var(--rayon);
+  box-shadow: var(--ombre); font-size: 1.25rem; color: var(--marine); font-weight: 600;
+}
+.citation small { display: block; margin-top: .6em; font-size: .9rem; font-weight: 400; color: var(--gris); }
+
+/* Liste de principes */
+.principes { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.principes li { background: var(--blanc); border-radius: 14px; padding: 18px 20px; box-shadow: var(--ombre); }
+.principes strong { display: block; color: var(--marine); }
+.source { font-size: .85rem; color: var(--gris); font-style: italic; }
+
+/* Appel à l'action en bas de page */
+.cta-page { text-align: center; margin-top: 60px; padding: 40px 20px; background: var(--jaune); border-radius: var(--rayon); }
+.cta-page h2 { margin-bottom: .3em; }
+.cta-page p { margin: 0 0 1.2em; }
+.cta-page .boutons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.lien-suite { font-weight: 700; text-decoration: none; }
+.lien-suite:hover { text-decoration: underline; }
+.entete-page + section { padding-top: clamp(20px, 4vw, 40px); }
+
+/* Boutons « Notre histoire / mission / vision » */
+.liens-decouvrir { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; max-width: 380px; }
+.btn-decouvrir {
+  display: flex; align-items: center; gap: 14px;
+  padding: 10px 18px 10px 10px;
+  background: var(--blanc); color: var(--marine);
+  border: 2px solid var(--c); border-radius: 999px;
+  font-weight: 700; font-size: 1.05rem; text-decoration: none;
+  box-shadow: 0 4px 0 var(--c);
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, color .15s ease;
+}
+.btn-decouvrir .pastille {
+  display: grid; place-items: center; flex: none;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--c); font-size: 1.25rem;
+}
+.btn-decouvrir .fleche { margin-left: auto; font-size: 1.2rem; transition: transform .15s ease; }
+.btn-decouvrir:hover { background: var(--c); color: var(--blanc); transform: translateY(-2px); box-shadow: 0 6px 0 var(--marine); }
+.btn-decouvrir:hover .pastille { background: var(--blanc); }
+.btn-decouvrir:hover .fleche { transform: translateX(4px); }
+.btn-decouvrir:focus-visible { outline: 3px solid var(--marine); outline-offset: 3px; }
+@media (max-width: 760px) { .liens-decouvrir { max-width: none; } }
+@media (prefers-reduced-motion: reduce) { .btn-decouvrir, .btn-decouvrir .fleche { transition: none; } }
